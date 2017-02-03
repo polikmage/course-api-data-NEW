@@ -16,12 +16,6 @@ public class TopicService {
     @Autowired
     private TopicRepository topicRepository;
 
-//    private List<Topic> topics = new ArrayList<>(Arrays.asList(
-//            new Topic("spring","springframework", "spr descrption"),
-//            new Topic("java","core java", "corejava descrption"),
-//            new Topic("jscript","jscriptomg", "javasrctiptdescrption")
-//    ));
-
 
     public List<Topic> getAllTopics(){
         //return topics;
@@ -39,7 +33,8 @@ public class TopicService {
     }
 
     public void updateTopic(Topic topic, String id) {
-        topicRepository.findAll().forEach(topic1 -> topic.getId().equals(id));
+        topicRepository.save(topic);
+
     }
 
     public void deleteTopic(String id) {
