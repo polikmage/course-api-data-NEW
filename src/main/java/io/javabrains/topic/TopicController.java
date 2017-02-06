@@ -19,7 +19,7 @@ public class TopicController {
         return topicService.getAllTopics();
     }
 
-    @RequestMapping(value = "/io/javabrains/topic/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/topic/{id}", method = RequestMethod.GET)
     public Topic getTopic(@PathVariable("id") String id) {
         return topicService.getTopic(id);
     }
@@ -34,7 +34,7 @@ public class TopicController {
         topicService.updateTopic(topic,id);
     }
 
-    @RequestMapping(value = "/io/javabrains/topic/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/topics/{id}", method = RequestMethod.DELETE)
     public void deleteTopic(@PathVariable("id") String id) {
          topicService.deleteTopic(id);
     }
