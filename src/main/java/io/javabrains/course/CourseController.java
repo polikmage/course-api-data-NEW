@@ -24,17 +24,17 @@ public class CourseController {
         return courseService.getCourse(courseId);
     }
 
-    @RequestMapping(value = "/topics", method = RequestMethod.POST)
+    @RequestMapping(value = "/topics/{topicId}/course/", method = RequestMethod.POST)
     public void addCourse(@RequestBody Course course) {
         courseService.addCourse(course);
     }
 
-    @RequestMapping(value = "/topics/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/topics/{topicId}/course/{courseId}", method = RequestMethod.PUT)
     public void updateCourse(@RequestBody Course course, @PathVariable String id) {
         courseService.updateCourse(course,id);
     }
 
-    @RequestMapping(value = "/io/javabrains/topic/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/topics/{topicId}/course/{courseId}", method = RequestMethod.DELETE)
     public void deleteCourse(@PathVariable("id") String id) {
          courseService.deleteCourse(id);
     }
