@@ -1,5 +1,6 @@
 package io.javabrains.course;
 
+import io.javabrains.topic.Topic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,22 +20,24 @@ public class CourseController {
         return courseService.getAllCourses(topicId);
     }
 
-    @RequestMapping(value = "/topics/{topicId}/course/{courseId}", method = RequestMethod.GET)
-    public Course getCourse(@PathVariable("courseId") String courseId) {
-        return courseService.getCourse(courseId);
+    @RequestMapping("/topics/{topicId}/course/{id}")
+    public Course getCourse(@PathVariable String id) {
+        return courseService.getCourse(id);
     }
 
-    @RequestMapping(value = "/topics/{topicId}/course/", method = RequestMethod.POST)
-    public void addCourse(@RequestBody Course course) {
+    @RequestMapping(method = RequestMethod.POST, value = "/topics/{topicId}/courses/{id}")
+    public void addCourse(@RequestBody Course course, @PathVariable String topicId) {
+        course.setTopic(new Topic(topicId,"",""));
         courseService.addCourse(course);
     }
 
-    @RequestMapping(value = "/topics/{topicId}/course/{courseId}", method = RequestMethod.PUT)
-    public void updateCourse(@RequestBody Course course, @PathVariable String id) {
-        courseService.updateCourse(course,id);
+    @RequestMapping(method = RequestMethod.PUT, value = "/topics/{topicId}/courses/{id}")
+    public void updateCourse(@RequestBody Course course, @PathVariable String topicId, @PathVariable String id) {
+        course.setTopic(new Topic(topicId,"",""));
+        courseService.updateCourse(course);
     }
 
-    @RequestMapping(value = "/topics/{topicId}/course/{courseId}", method = RequestMethod.DELETE)
+    @RequestMapping(method = RequestMethod.DELETE, value = "/topics/{topicId}/courses/{id}")
     public void deleteCourse(@PathVariable("id") String id) {
          courseService.deleteCourse(id);
     }

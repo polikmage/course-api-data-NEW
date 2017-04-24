@@ -31,7 +31,7 @@ public class CourseService {
         courseRepository.save(course);
     }
 
-    public void updateCourse(Course course, String id) {
+    public void updateCourse(Course course) {
         courseRepository.save(course);
 
     }
